@@ -4,6 +4,7 @@
   "description": "Инфраструктура",
   "main": "server.js",
   "scripts": {
+    "style:scripts": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -12,5 +13,10 @@
     "Express"
   ],
   "author": "Georgiy Starkov",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  }
 }
