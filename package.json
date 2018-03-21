@@ -1,0 +1,16 @@
+{
+  "name": "home4",
+  "version": "1.0.0",
+  "description": "Инфраструктура",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Docker",
+    "Travis",
+    "Express"
+  ],
+  "author": "Georgiy Starkov",
+  "license": "ISC"
+}
