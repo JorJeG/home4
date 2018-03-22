@@ -17,8 +17,16 @@
     "Travis",
     "Express"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorJeG/home4.git"
+  },
   "author": "Georgiy Starkov",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorJeG/home4/issues"
+  },
+  "homepage": "https://github.com/JorJeG/home4#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
