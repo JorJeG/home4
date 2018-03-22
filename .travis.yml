@@ -19,15 +19,16 @@ aliases:
 jobs:
   include:
     - stage: Deploy (development)
-      if: tag IS blank
       script:
         - npm run prod
       deploy:
         <<: *deploy
         app: home4-master
+        on:
+          tags: false
+          all_branches: true
 
     - stage: Deploy (production)
-      if: tag IS present
       script:
         - npm run prod
       deploy:
@@ -35,3 +36,4 @@ jobs:
         app: home4-production
         on:
           tags: true
+          all_branches: true
