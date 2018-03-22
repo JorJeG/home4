@@ -8,8 +8,8 @@
     "style:scripts": "eslint .",
     "lint": "npm-run-all --parallel style:css style:scripts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "production": "webpack --mode production"
+    "dev": "webpack",
+    "prod": "webpack"
   },
   "keywords": [
     "Docker",
