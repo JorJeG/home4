@@ -1,33 +1,37 @@
 sudo: false
 language: node_js
+
 node_js:
-  - '9'
-  - '8'
+  - 'node'
+  - 8
+
+script:
+  - npm run lint
+  - npm run test
+
+aliases:
+  deploy: &deploy
+    provider: heroku
+    api_key:
+      secure: APprOhbZe5xJTzPdZ+ArU6uGPGvIlD5r8+AUHEYPe8Pt//TZyQ3XWFy8smwL1k+7NDD2+kj6I6QJzCuF4u9p3ELRXBqvDF2Zy4+tg56ld02WZNGwOGm9Wc7r/kf+GrW9vg9PZlG7ELANu6W2g3Bg2vHjPFsLQgRvfZAh/KzJ4IuGyGu8DB38/rJCXTsyc6AOxHX/9NY2mDThgcHtWH1bEEkvsPCj82luEH2hcEddmvgZPr9cPL5nguGU8onC6GgjxdcoZSdcQ8eNYnMPAAIV+obnG3i2Y9tXTD0Txsjf0rYiJWH1QAwKg/M0I2tywU52Y/wPwG29YVHxYw6gKp9tdteibyVU5hrw1Pkbr3gOP2YN11J1FNqNFILJon8zFLppF4JNLOXHP7Yxz/RmUzAweVBIJM4l1txFa9JDwt15t8+WLEeH3/yaRLJa1CcMR1z+Zs1EFUQF5CC9dv/pffRQDifYnQg95ekshBVuPBgKSfAYFID1MZB6i1jKSiaDiwiY7sBinf9XA/Nvq6P+/6bx6SzCODF7Bwx2is7PRYHSKxIzaTMHRfXBAfjKn164p4rBw6fylVNi/JS8KNzRydVUlWjUCLWwDJEF/A93xzhOS+JHhVAByHGvy4mLLzKRtga5OrhG5roZ6msKxK8TYV+KRnJURjL0A6jQ0wuWz/mPiE4=
+    skip_cleanup: true
+
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
-    - stage: test
-      script: npm run test
-    - stage: deploy staging
+    - stage: Deploy (development)
+      if: tag IS blank
+      script:
+        - npm run prod
       deploy:
-        script: npm run dev
-        provider: heroku
-        api_key:
-          secure: APprOhbZe5xJTzPdZ+ArU6uGPGvIlD5r8+AUHEYPe8Pt//TZyQ3XWFy8smwL1k+7NDD2+kj6I6QJzCuF4u9p3ELRXBqvDF2Zy4+tg56ld02WZNGwOGm9Wc7r/kf+GrW9vg9PZlG7ELANu6W2g3Bg2vHjPFsLQgRvfZAh/KzJ4IuGyGu8DB38/rJCXTsyc6AOxHX/9NY2mDThgcHtWH1bEEkvsPCj82luEH2hcEddmvgZPr9cPL5nguGU8onC6GgjxdcoZSdcQ8eNYnMPAAIV+obnG3i2Y9tXTD0Txsjf0rYiJWH1QAwKg/M0I2tywU52Y/wPwG29YVHxYw6gKp9tdteibyVU5hrw1Pkbr3gOP2YN11J1FNqNFILJon8zFLppF4JNLOXHP7Yxz/RmUzAweVBIJM4l1txFa9JDwt15t8+WLEeH3/yaRLJa1CcMR1z+Zs1EFUQF5CC9dv/pffRQDifYnQg95ekshBVuPBgKSfAYFID1MZB6i1jKSiaDiwiY7sBinf9XA/Nvq6P+/6bx6SzCODF7Bwx2is7PRYHSKxIzaTMHRfXBAfjKn164p4rBw6fylVNi/JS8KNzRydVUlWjUCLWwDJEF/A93xzhOS+JHhVAByHGvy4mLLzKRtga5OrhG5roZ6msKxK8TYV+KRnJURjL0A6jQ0wuWz/mPiE4=
-        skip_cleanup: true
+        <<: *deploy
         app: home4-master
-        on:
-          tags: false
-    -stage: deploy production
+
+    - stage: Deploy (production)
+      if: tag IS present
+      script:
+        - npm run prod
       deploy:
-        script: npm run prod
-        provider: heroku
-        api_key:
-          secure: APprOhbZe5xJTzPdZ+ArU6uGPGvIlD5r8+AUHEYPe8Pt//TZyQ3XWFy8smwL1k+7NDD2+kj6I6QJzCuF4u9p3ELRXBqvDF2Zy4+tg56ld02WZNGwOGm9Wc7r/kf+GrW9vg9PZlG7ELANu6W2g3Bg2vHjPFsLQgRvfZAh/KzJ4IuGyGu8DB38/rJCXTsyc6AOxHX/9NY2mDThgcHtWH1bEEkvsPCj82luEH2hcEddmvgZPr9cPL5nguGU8onC6GgjxdcoZSdcQ8eNYnMPAAIV+obnG3i2Y9tXTD0Txsjf0rYiJWH1QAwKg/M0I2tywU52Y/wPwG29YVHxYw6gKp9tdteibyVU5hrw1Pkbr3gOP2YN11J1FNqNFILJon8zFLppF4JNLOXHP7Yxz/RmUzAweVBIJM4l1txFa9JDwt15t8+WLEeH3/yaRLJa1CcMR1z+Zs1EFUQF5CC9dv/pffRQDifYnQg95ekshBVuPBgKSfAYFID1MZB6i1jKSiaDiwiY7sBinf9XA/Nvq6P+/6bx6SzCODF7Bwx2is7PRYHSKxIzaTMHRfXBAfjKn164p4rBw6fylVNi/JS8KNzRydVUlWjUCLWwDJEF/A93xzhOS+JHhVAByHGvy4mLLzKRtga5OrhG5roZ6msKxK8TYV+KRnJURjL0A6jQ0wuWz/mPiE4=
-        skip_cleanup: true
+        <<: *deploy
         app: home4-production
         on:
           tags: true
-          all_branches: true
-

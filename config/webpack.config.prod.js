@@ -43,19 +43,19 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: './src/fonts',
+        from: path.join(__dirname, '../src/fonts'),
         to: './fonts',
       },
       {
-        from: './src/favicon',
+        from: path.join(__dirname, '../src/favicon'),
         to: './favicon',
       },
       {
-        from: './src/img',
+        from: path.join(__dirname, '../src/img'),
         to: './img',
       },
       {
-        from: './src/index.html',
+        from: path.join(__dirname, '../src/index.html'),
         to: './',
       },
     ]),

@@ -3,6 +3,7 @@
   "description": "This app for pull request",
   "scripts": {},
   "env": {},
+  "image": "heroku/nodejs",
   "formation": {
     "web": {
       "quantity": 1
