@@ -9,7 +9,8 @@
     "lint": "npm-run-all --parallel style:css style:scripts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack",
-    "prod": "webpack"
+    "prod": "webpack",
+    "start": "node server.js"
   },
   "keywords": [
     "Docker",
@@ -35,5 +36,8 @@
     "stylelint-config-standard": "^18.2.0",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
