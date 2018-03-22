@@ -7,7 +7,7 @@
     "style:css": "stylelint \"**/*.css\"",
     "style:scripts": "eslint .",
     "lint": "npm-run-all --parallel style:css style:scripts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "exit 0",
     "dev": "webpack",
     "prod": "webpack",
     "start": "node server.js"
