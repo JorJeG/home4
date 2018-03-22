@@ -57,6 +57,10 @@ module.exports = {
         from: './src/img',
         to: './img',
       },
+      {
+        from: './src/index.html',
+        to: './',
+      },
     ]),
   ],
   watch: true,
