@@ -19,6 +19,9 @@
   "author": "Georgiy Starkov",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.0",
     "eslint-config-airbnb-base": "^12.1.0",
