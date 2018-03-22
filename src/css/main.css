@@ -1,0 +1,6 @@
+@import 'header/header.css';
+@import 'footer/footer.css';
+
+.app {
+  color: rgb(238, 40, 40);
+}
