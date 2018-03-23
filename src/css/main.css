@@ -17,3 +17,7 @@
 .folder {
   color: blueviolet;
 }
+
+.content {
+  white-space: pre;
+}

@@ -16,6 +16,6 @@ block content
     each file in files
       li
         if file.type === 'blob'
-          a.file= file.name
+          a.file(href=`/blob/${file.hash}/`)= file.name
         else
-          a.folder= file.name
+          a.folder(href=`/${branch}/${commit}/${file.hash}/`)= file.name
