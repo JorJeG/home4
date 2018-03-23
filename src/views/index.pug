@@ -11,7 +11,7 @@ block content
   ul
     each commit in commits
       li
-        a= commit.title
+        a(href=`/${branch}/${commit.hash}/`)= commit.title
   ul
     each file in files
       li
