@@ -1,7 +1,21 @@
-doctype html
-html
-  head
-    link(rel="icon" href="favicon/favicon.ico" type="image/x-icon")
-    link(rel='stylesheet', href='css/style.bundle.css')
-  body
-    h1.title= title
+extends layout
+
+block content
+  ul
+    each branch in branches
+      li
+        if branch.selected
+          a.branch.red(href=`/${branch.name}/`)= branch.name
+        else
+          a.branch.green(href=`/${branch.name}/`)= branch.name
+  ul
+    each commit in commits
+      li
+        a= commit.title
+  ul
+    each file in files
+      li
+        if file.type === 'blob'
+          a.file= file.name
+        else
+          a.folder= file.name
