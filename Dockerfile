@@ -14,6 +14,7 @@ RUN npm install
 RUN npm run prod
 # Клонируем репозиторий с которым будем работать
 RUN git clone https://github.com/JorJeG/wallet-app.git
+RUN cd ./wallet-app/ && for branch in  $(git branch -r | grep -v 'HEAD\|master'); do git branch --track ${branch##*/} $branch; done
 
 # Запускаем контейнер
 CMD npm start
