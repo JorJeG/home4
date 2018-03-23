@@ -1,3 +1,9 @@
 build:
   docker:
     web: Dockerfile
+  run:
+    - git clone https://github.com/JorJeG/wallet-app.git
+    - cd ./wallet-app/ && for branch in  $(git branch -r | grep -v 'HEAD\|master'); do git branch --track ${branch##*/} $branch; done
+    - npm i
+    - npm run prod
+    - npm start
