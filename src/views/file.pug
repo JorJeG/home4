@@ -1,4 +1,6 @@
 extends layout
 
 block content
-  p.content= content
+  body.page-content
+    a(href=`${url}`) Back
+    p.content= content

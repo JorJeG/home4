@@ -7,15 +7,15 @@ module.exports = function showBranch(selectedBranch = 'master') {
     exec(`cd ${PATH_TO_REPO} && git branch`).then((branches) => {
       const arrBranches = branches.stdout.trim().split('\n');
       resolve(arrBranches.map((branch) => {
-        if (branch.slice(2) === selectedBranch) {
+        if (branch.replace('*', '').trim() === selectedBranch) {
           return {
             selected: true,
-            name: branch.slice(2),
+            name: branch.replace('*', '').trim(),
           };
         }
         return {
           selected: false,
-          name: branch.slice(2),
+          name: branch.replace('*', '').trim(),
         };
       }));
     }).catch(() => {
