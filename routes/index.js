@@ -6,11 +6,17 @@ const showFiles = require('../helpers/showFiles');
 
 const router = express.Router();
 
-router.get('/:branch?', async (req, res) => {
-  const branches = await showBranches(req.params.branch);
-  const commits = await showCommits(req.params.branch);
-  const files = await showFiles(commits.hash);
-  res.render('index', { branches, commits, files });
+router.get('/:branch?/:commit?', async (req, res) => {
+  const { branch, commit } = req.params;
+  const branches = await showBranches(branch);
+  const commits = await showCommits(branch);
+  const files = await showFiles(commit);
+  res.render('index', {
+    branches,
+    commits,
+    files,
+    branch,
+  });
 });
 
 module.exports = router;
