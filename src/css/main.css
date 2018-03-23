@@ -1,15 +1,19 @@
 .branch {
   text-decoration: none;
 }
+
 .red {
   color: rgb(238, 40, 40);
 }
+
 .green {
   color: green;
 }
+
 .file {
   color: palegreen;
 }
+
 .folder {
   color: blueviolet;
 }
