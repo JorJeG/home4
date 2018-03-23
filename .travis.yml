@@ -8,6 +8,7 @@ node_js:
 script:
   - npm run lint
   - npm run test
+  - npm run prod
 
 aliases:
   deploy: &deploy
@@ -19,21 +20,13 @@ aliases:
 jobs:
   include:
     - stage: Deploy (development)
-      script:
-        - npm run prod
+      if: tag IS blank
       deploy:
         <<: *deploy
         app: home4-master
-        on:
-          tags: false
-          all_branches: true
 
     - stage: Deploy (production)
-      script:
-        - npm run prod
+      if: tag IS present
       deploy:
         <<: *deploy
         app: home4-production
-        on:
-          tags: true
-          all_branches: true
