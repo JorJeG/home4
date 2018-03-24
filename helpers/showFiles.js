@@ -1,7 +1,7 @@
 const exec = require('./exec');
 const { PATH_TO_REPO } = require('../config/constants');
 
-module.exports = function showFiles(selectedCommits = 'HEAD', path) {
+module.exports = function showFiles(selectedCommits, path) {
   return new Promise((resolve, reject) => {
     const pathDir = path || selectedCommits;
     exec(`cd ${PATH_TO_REPO} && git ls-tree --full-name ${pathDir}`)

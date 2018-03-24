@@ -12,9 +12,6 @@ let fileUrl;
 
 // Переходит на дефолтную ветку
 router.get('/', async (req, res) => {
-  // const branches = await showBranches();
-  // const selectedBranch = branches.filter(br => br.selected === true);
-  // console.log(selectedBranch);
   const commits = await showCommits();
   res.redirect(`master/${commits[0].hash}/`);
 });
@@ -30,7 +27,7 @@ router.get('/blob/:path?', async (req, res) => {
 });
 
 // Переключения между ветками, коммитами и папками
-router.get('/:branch/:commit/:path*?', async (req, res) => {
+router.get('/:branch/:commit/:path?/*', async (req, res) => {
   const { branch, commit, path } = req.params;
 
   // Когда заходим внутрь директории сохраняем предыдущий путь
@@ -44,7 +41,7 @@ router.get('/:branch/:commit/:path*?', async (req, res) => {
   try {
     const branches = await showBranches(branch);
     const commits = await showCommits(branch);
-    const files = await showFiles(commit, path);
+    const files = await showFiles(commits[0].hash, commit);
     const sortedFiles = sortFiles(files);
     res.render('index', {
       branches,
@@ -61,6 +58,7 @@ router.get('/:branch/:commit/:path*?', async (req, res) => {
 });
 
 router.get('/*', (req, res) => {
+  console.log(req.originalUrl);
   res.render('error');
 });
 
