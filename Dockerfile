@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:alpine
 
 # Определяем рабочую директорию для приложения
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Устанавливаем git
-RUN apt-get update && apt-get install -y git
+RUN apk add --no-cache git
 # Устанавливаем зависимости
 RUN npm install
 # Запускаем сборку
