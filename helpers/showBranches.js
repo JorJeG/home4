@@ -10,12 +10,12 @@ module.exports = function showBranch(selectedBranch = 'master') {
         if (branch.replace('*', '').trim() === selectedBranch) {
           return {
             selected: true,
-            name: branch.replace('*', '').trim(),
+            name: branch.replace('*', '').trim().replace('/', '-'),
           };
         }
         return {
           selected: false,
-          name: branch.replace('*', '').trim(),
+          name: branch.replace('*', '').trim().replace('/', '-'),
         };
       }));
     }).catch(() => {
