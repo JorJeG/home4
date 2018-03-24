@@ -10,7 +10,7 @@ block content
               a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${commits[0].hash}/`)= branch.name
             else
               a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${commits[0].hash}/`)= branch.name
-      if path
+      if lastPath
         a(href=`${fileUrl}`) Back
       ul.files-list
         each file in sortedFiles
@@ -18,7 +18,7 @@ block content
             if file.type === 'blob'
               a.files-item__link.files-item__link_color_blue(href=`/blob/${file.hash}/`)= file.name
             else
-              a.files-item__link.files-item__link_color_darkgreen(href=`/${branch}/${commit}/${file.hash}/`)= file.name
+              a.files-item__link.files-item__link_color_darkgreen(href=`${curUrl}${file.hash}/`)= file.name
     ul.commit-list
       each commit in commits
         li.commit-item

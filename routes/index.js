@@ -27,12 +27,15 @@ router.get('/blob/:path?', async (req, res) => {
 });
 
 // Переключения между ветками, коммитами и папками
-router.get('/:branch/:commit/:path?/*', async (req, res) => {
-  const { branch, commit, path } = req.params;
+router.get('/:branch/:commit/*', async (req, res) => {
+  const { branch, commit } = req.params;
 
   // Когда заходим внутрь директории сохраняем предыдущий путь
-  const lastPath = req.originalUrl.match(/[a-f0-9]*\/$/)[0];
+  let lastPath = req.originalUrl.match(/[a-f0-9]*\/$/)[0];
   fileUrl = req.originalUrl.replace(lastPath, '');
+  if (lastPath === `${commit}/`) {
+    lastPath = '';
+  }
 
   // Сохраняем полный путь, чтобы вернуться обратно, когда смотрим
   // содержание файла
@@ -41,7 +44,7 @@ router.get('/:branch/:commit/:path?/*', async (req, res) => {
   try {
     const branches = await showBranches(branch);
     const commits = await showCommits(branch);
-    const files = await showFiles(commits[0].hash, commit);
+    const files = await showFiles(commits[0].hash, lastPath);
     const sortedFiles = sortFiles(files);
     res.render('index', {
       branches,
@@ -50,7 +53,7 @@ router.get('/:branch/:commit/:path?/*', async (req, res) => {
       branch,
       commit,
       fileUrl,
-      path,
+      curUrl: req.originalUrl,
     });
   } catch (e) {
     res.render('error');
@@ -58,7 +61,6 @@ router.get('/:branch/:commit/:path?/*', async (req, res) => {
 });
 
 router.get('/*', (req, res) => {
-  console.log(req.originalUrl);
   res.render('error');
 });
 
