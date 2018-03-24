@@ -7,7 +7,7 @@
     "style:css": "stylelint \"**/*.css\"",
     "style:scripts": "eslint .",
     "lint": "npm-run-all --parallel style:css style:scripts",
-    "test": "mocha \"./{,!{node_modules}**}/*.test.js\"",
+    "test": "mocha \"./test/**/*.test.js\"",
     "dev": "webpack",
     "prod": "webpack",
     "start": "nodemon server.js"
