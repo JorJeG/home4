@@ -53,6 +53,7 @@ router.get('/:branch/:commit/*', async (req, res) => {
       branch,
       commit,
       fileUrl,
+      lastPath,
       curUrl: req.originalUrl,
     });
   } catch (e) {

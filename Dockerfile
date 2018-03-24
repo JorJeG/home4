@@ -13,7 +13,7 @@ RUN npm install
 # Запускаем сборку
 RUN npm run prod
 # Клонируем репозиторий с которым будем работать
-RUN git clone https://github.com/JorJeG/wallet-app.git
+RUN git clone --mirror https://github.com/JorJeG/wallet-app.git wallet-app/.git
 
 # Запускаем контейнер
 CMD npm start
