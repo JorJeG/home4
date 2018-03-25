@@ -1,6 +1,6 @@
 {
-  "name": "home4-dev",
-  "description": "This app for pull request",
+  "name": "home4",
+  "description": "This app is for viewing repo",
   "scripts": {},
   "env": {},
   "stack": "container",
