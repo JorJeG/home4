@@ -24,7 +24,7 @@ jobs:
         - npm run prod
       deploy:
         <<: *deploy
-        app: home4-master
+        app: home4-dev
         on:
           tags: false
           all_branches: true
