@@ -1,8 +1,9 @@
 {
-  "name": "home4-dev-pull",
-  "description": "This app for pull request",
+  "name": "hom4-dev",
+  "description": "This app is for viewing repo",
   "scripts": {},
   "env": {},
+  "stack": "container",
   "formation": {
     "web": {
       "quantity": 1

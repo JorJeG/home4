@@ -7,9 +7,9 @@ block content
         each branch in branches
           li.branch-item
             if branch.selected
-              a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${commits[0].hash}/`)= branch.name
+              a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${branch.commit}/`)= branch.name
             else
-              a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${commits[0].hash}/`)= branch.name
+              a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${branch.commit}/`)= branch.name
       if lastPath
         a(href=`${fileUrl}`) Back
       ul.files-list
