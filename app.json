@@ -1,14 +1,14 @@
 {
-  "name": "home4-dev",
+  "name": "home4-dev-pull",
   "description": "This app for pull request",
   "scripts": {},
   "env": {},
-  "image": "heroku/nodejs",
   "formation": {
     "web": {
       "quantity": 1
     }
   },
   "addons": [],
-  "buildpacks": []
+  "buildpacks": [],
+  "stack": "container"
 }
