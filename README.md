@@ -39,11 +39,3 @@ npm start
 ```bash
 heroku apps:stacks:set container --app <name-app>
 ```
-##### update:
-можно добавить в файл app.json:
-```json
-{
-  "stack": "container"
-}
-```
-что для pull-request review apps позволит задать правильный контейнер

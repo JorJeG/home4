@@ -8,7 +8,7 @@ module.exports = function showBranch(selectedBranch) {
       const arrBranches = branches.stdout.trim().split('\n');
       resolve(arrBranches.map((branch) => {
         const parseBranch = branch.replace('*', '').trim().split(' ');
-        if (parseBranch[0] !== selectedBranch) {
+        if (parseBranch[0].replace('/', '^') !== selectedBranch) {
           return {
             selected: false,
             name: parseBranch[0].replace('/', '^'),
