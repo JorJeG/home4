@@ -19,6 +19,7 @@ aliases:
 jobs:
   include:
     - stage: Deploy (development)
+      if: branch = master
       script:
         - npm run prod
       deploy:
@@ -29,6 +30,7 @@ jobs:
           all_branches: true
 
     - stage: Deploy (production)
+      if: branch = master
       script:
         - npm run prod
       deploy:

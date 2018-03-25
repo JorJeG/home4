@@ -9,7 +9,7 @@ COPY . .
 # Устанавливаем git
 RUN apk add --no-cache git
 # Устанавливаем зависимости
-RUN npm install --only=production
+RUN npm install
 # Запускаем сборку
 RUN npm run prod
 # Клонируем репозиторий с которым будем работать
