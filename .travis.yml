@@ -31,11 +31,9 @@ jobs:
 
     - stage: Deploy (production)
       if: branch = master
+      if: tag ~= ^v
       script:
         - npm run prod
       deploy:
         <<: *deploy
         app: home4-production
-        on:
-          tags: true
-          all_branches: true
