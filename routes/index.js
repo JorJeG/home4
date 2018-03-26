@@ -43,9 +43,9 @@ router.get('/:branch/:commit/*', async (req, res) => {
     let files;
     if (lastPath === `${commit}/`) {
       lastPath = '';
-      files = await showFiles(commits[0].hash, commit);
+      files = await showFiles(commit);
     } else {
-      files = await showFiles(commits[0].hash, lastPath);
+      files = await showFiles(lastPath);
     }
     const sortedFiles = sortFiles(files);
     res.render('index', {
