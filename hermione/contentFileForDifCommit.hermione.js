@@ -1,10 +1,11 @@
 const { assert } = require('chai');
 
 describe('Дерево файлов', function() {
-  it('Отображение содержимого файла для коммита из ветки', function() {
+  it('Отображение содержимого файла для коммита из ветки отличной от ветки по умолчанию', function() {
     return this.browser
       .url('/')
-      .click('.commit-item__link=Тест')
+      .click('.branch-item__link=feature_back-button')
+      .click('.commit-item__link=Заглушка для тестов')
       .click('.files-item__link_color_darkgreen=config')
       .click('.files-item__link_color_blue=webpack.config.dev.js')
       .getText('.content')
@@ -81,7 +82,7 @@ module.exports = {
       .click('=Back')
       .getText('.files-list')
       .then((files) => {
-        assert.equal(files, `\
+        assert.equal((files), `\
 webpack.config.dev.js\n\
 webpack.config.prod.js`);
       });

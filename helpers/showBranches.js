@@ -16,8 +16,6 @@ module.exports = function showBranch(selectedBranch) {
         if (parseBranch[0] === selectedBranch) {
           output.selected = true;
         }
-        console.log(output);
-
         return output;
       }));
     }).catch(() => {

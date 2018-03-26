@@ -14,7 +14,7 @@ favicon\n\
 fonts\n\
 img\n\
 js\n\
-views`);
+index.html`);
       })
       .click('=Back')
       .getText('.files-list')

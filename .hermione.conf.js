@@ -3,15 +3,17 @@ module.exports = {
   gridUrl: 'http://0.0.0.0:4444/wd/hub',
 
   browsers: {
-    // chrome: {
-    //   desiredCapabilities: {
-    //     browserName: 'chrome'
-    //   }
-    // },
+    chrome: {
+      desiredCapabilities: {
+        browserName: 'chrome'
+      },
+      retry: 2
+    },
     firefox: {
       desiredCapabilities: {
         browserName: 'firefox'
-      }
+      },
+      retry: 2
     }
   },
 

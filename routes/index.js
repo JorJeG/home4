@@ -9,7 +9,6 @@ const sortFiles = require('../helpers/sortFiles');
 const router = express.Router();
 let url;
 let fileUrl;
-const filePath = [];
 
 // Переходит на дефолтную ветку
 router.get('/', async (req, res) => {
