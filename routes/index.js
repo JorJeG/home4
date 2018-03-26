@@ -28,23 +28,25 @@ router.get('/blob/:path?', async (req, res) => {
 
 // Переключения между ветками, коммитами и папками
 router.get('/:branch/:commit/*', async (req, res) => {
-  const { branch, commit } = req.params;
-
-  // Когда заходим внутрь директории сохраняем предыдущий путь
-  let lastPath = req.originalUrl.match(/[a-f0-9]*\/$/)[0];
-  fileUrl = req.originalUrl.replace(lastPath, '');
-  if (lastPath === `${commit}/`) {
-    lastPath = '';
-  }
-
   // Сохраняем полный путь, чтобы вернуться обратно, когда смотрим
   // содержание файла
   url = req.originalUrl;
 
   try {
+    const { branch, commit } = req.params;
+
+    // Когда заходим внутрь директории сохраняем предыдущий путь
+    let lastPath = req.originalUrl.match(/[a-f0-9]*\/$/)[0];
+    fileUrl = req.originalUrl.replace(lastPath, '');
     const branches = await showBranches(branch);
     const commits = await showCommits(branch);
-    const files = await showFiles(commits[0].hash, lastPath);
+    let files;
+    if (lastPath === `${commit}/`) {
+      lastPath = '';
+      files = await showFiles(commits[0].hash, commit);
+    } else {
+      files = await showFiles(commits[0].hash, lastPath);
+    }
     const sortedFiles = sortFiles(files);
     res.render('index', {
       branches,
