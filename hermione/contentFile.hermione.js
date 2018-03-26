@@ -22,4 +22,4 @@ webpack.config.dev.js\n\
 webpack.config.prod.js`);
     });
   });
-})
+});

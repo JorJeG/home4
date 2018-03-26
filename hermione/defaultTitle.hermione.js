@@ -14,7 +14,8 @@ describe('Ветки', function() {
       })
       .getText('.files-list')
       .then((files) => {
-        assert.equal(files, `config\n\
+        assert.equal(files, `\
+config\n\
 helpers\n\
 routes\n\
 src\n\

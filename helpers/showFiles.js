@@ -1,10 +1,10 @@
 const exec = require('./exec');
 const { PATH_TO_REPO } = require('../config/constants');
 
-module.exports = function showFiles(selectedCommits, path) {
+module.exports = function showFiles(path) {
   return new Promise((resolve, reject) => {
     console.log(path);
-    const pathDir = path.slice(0, -2) || selectedCommits;
+    const pathDir = path.slice(0, -2);
     exec(`cd ${PATH_TO_REPO} && git ls-tree --full-name ${pathDir}`)
       .then((tree) => {
         const arrFiles = tree.stdout.split('\n').filter(file => file !== '');

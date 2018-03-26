@@ -6,7 +6,7 @@ block content
       ul.branch-list
         each branch in branches
           li.branch-item
-            if branch.selected
+            if branch.selected === true
               a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${branch.commit}/`)= branch.name
             else
               a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${branch.commit}/`)= branch.name

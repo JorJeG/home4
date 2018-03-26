@@ -8,18 +8,17 @@ module.exports = function showBranch(selectedBranch) {
       const arrBranches = branches.stdout.trim().split('\n');
       resolve(arrBranches.map((branch) => {
         const parseBranch = branch.replace('*', '').trim().split(' ');
-        if (parseBranch[0] !== selectedBranch) {
-          return {
-            selected: false,
-            name: parseBranch[0].replace('/', '^'),
-            commit: parseBranch[1],
-          };
-        }
-        return {
-          selected: true,
+        const output = {
+          selected: false,
           name: parseBranch[0].replace('/', '^'),
           commit: parseBranch[1],
         };
+        if (parseBranch[0] === selectedBranch) {
+          output.selected = true;
+        }
+        console.log(output);
+
+        return output;
       }));
     }).catch(() => {
       reject(Error('Опаньки'));

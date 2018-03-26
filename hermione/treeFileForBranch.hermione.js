@@ -1,26 +1,27 @@
 const { assert } = require('chai');
 
 describe('Дерево файлов', function() {
-  it('Отображает корректный список файлов и папок', function() {
+  it('Работа с деревом файлов в ветке отличной от ветки по умолчанию', function() {
     return this.browser
       .url('/')
-      .click('.files-item__link_color_darkgreen=config')
+      .click('.branch-item__link=test-test')
+      .click('.files-item__link_color_darkgreen=src')
       .getText('.files-list')
       .then((files) => {
         assert.equal(files, `\
-constants.js\n\
-webpack.config.dev.js\n\
-webpack.config.prod.js`)
+css\n\
+favicon\n\
+fonts\n\
+img\n\
+js\n\
+views`);
       })
       .click('=Back')
       .getText('.files-list')
       .then((files) => {
-        assert.equal((files), `\
+        assert.equal(files, `\
 config\n\
-helpers\n\
-routes\n\
 src\n\
-test\n\
 .dockerignore\n\
 .editorconfig\n\
 .eslintignore\n\
@@ -36,7 +37,7 @@ heroku.yml\n\
 package-lock.json\n\
 package.json\n\
 server.js\n\
-webpack.config.js`)
-      });
+webpack.config.js`);
+      })
   });
 });
