@@ -39,3 +39,8 @@ npm start
 ```bash
 heroku apps:stacks:set container --app <name-app>
 ```
+
+###Тесты
+
+В ветке hermione-test лежат интеграционные тесты, которые
+запускаю сетом в двух браузерах.
