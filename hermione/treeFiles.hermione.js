@@ -18,6 +18,7 @@ webpack.config.prod.js`)
         assert.equal((files), `\
 config\n\
 helpers\n\
+hermione\n\
 routes\n\
 src\n\
 test\n\
@@ -26,6 +27,7 @@ test\n\
 .eslintignore\n\
 .eslintrc.js\n\
 .gitignore\n\
+.hermione.conf.js\n\
 .stylelintignore\n\
 .stylelintrc.js\n\
 .travis.yml\n\
@@ -36,6 +38,7 @@ heroku.yml\n\
 package-lock.json\n\
 package.json\n\
 server.js\n\
+text.txt\n\
 webpack.config.js`)
       });
   });
