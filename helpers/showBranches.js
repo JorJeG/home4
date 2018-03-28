@@ -10,7 +10,7 @@ module.exports = function showBranch(selectedBranch) {
       // Проверяет есть ли такая ветка в репозитории
       const isThere = arrBranches.some((branch) => {
         const parseBranch = branch.replace('*', '').trim().split(' ');
-        return parseBranch[0] === selectedBranch;
+        return parseBranch[0].replace('/', '^') === selectedBranch;
       });
       if (!isThere) throw Error('Опаньки');
 
