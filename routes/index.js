@@ -12,18 +12,27 @@ let fileUrl;
 
 // Переходит на дефолтную ветку
 router.get('/', async (req, res) => {
-  const commits = await showCommits();
+  // Сделал здесь установку дефолтного параметра, а не внутри функции,
+  // потому что у тестов падает параметр % Branch, который сложно протестировать
+  // из-за того что мастер ветка будет постоянно меняться
+  const defaultBranch = 'master';
+
+  const commits = await showCommits(defaultBranch);
   res.redirect(`master/${commits[0].hash}/`);
 });
 
 // Отдаёт содержимое файла
 router.get('/blob/:path?', async (req, res) => {
   const { path } = req.params;
-  const content = await showContent(path);
-  res.render('file', {
-    content,
-    url,
-  });
+  try {
+    const content = await showContent(path);
+    res.render('file', {
+      content,
+      url,
+    });
+  } catch (e) {
+    res.render('error');
+  }
 });
 
 // Переключения между ветками, коммитами и папками
