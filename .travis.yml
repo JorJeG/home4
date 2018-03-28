@@ -33,3 +33,6 @@ jobs:
       deploy:
         <<: *deploy
         app: home4-production
+        on:
+          tags: true
+          all_branches: true
