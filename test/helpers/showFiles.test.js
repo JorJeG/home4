@@ -2,7 +2,7 @@ const chai = require('chai');
 const { expect } = chai;
 const chaiAsPromised = require('chai-as-promised');
 
-const showFiles = require('../../helpers/showFiles');
+const showFiles = require('./mocks/showFiles');
 
 chai.use(chaiAsPromised);
 

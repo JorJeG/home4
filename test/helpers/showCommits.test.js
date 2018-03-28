@@ -2,7 +2,7 @@ const chai = require('chai');
 const { expect } = chai;
 const chaiAsPromised = require('chai-as-promised');
 
-const showCommmits = require('../../helpers/showCommits');
+const showCommmits = require('./mocks/showCommits');
 
 chai.use(chaiAsPromised);
 
