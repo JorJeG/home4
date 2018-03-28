@@ -1,7 +1,7 @@
 const exec = require('./exec');
 const { PATH_TO_REPO } = require('../config/constants');
 
-module.exports = function showCommits(selectedBranch = 'master') {
+module.exports = function showCommits(selectedBranch) {
   return new Promise((resolve, reject) => {
     // Показывает массив с ветками
     exec(`cd ${PATH_TO_REPO} && git log --pretty=format:"%an - %s - %H" ${selectedBranch.replace('^', '/')}`)
