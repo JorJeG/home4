@@ -2,7 +2,6 @@ sudo: false
 language: node_js
 
 node_js:
-  - 'node'
   - 8
 
 script:
@@ -19,15 +18,15 @@ aliases:
 jobs:
   include:
     - stage: Deploy (development)
-      if: tag IS blank
       script:
         - npm run prod
       deploy:
         <<: *deploy
         app: hom4-dev
+        on:
+          tags: false
 
     - stage: Deploy (production)
-      if: tag IS present
       script:
         - npm run prod
       deploy:
