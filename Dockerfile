@@ -16,4 +16,4 @@ RUN npm run prod
 RUN git clone --mirror https://github.com/JorJeG/wallet-app.git wallet-app/.git
 
 # Запускаем контейнер
-CMD npm start
+CMD node server.js
