@@ -31,7 +31,7 @@ router.get('/blob/:path?', async (req, res) => {
       url,
     });
   } catch (e) {
-    res.render('error');
+    res.render('error', { message: e });
   }
 });
 
@@ -68,12 +68,12 @@ router.get('/:branch/:commit/*', async (req, res) => {
       curUrl: req.originalUrl,
     });
   } catch (e) {
-    res.render('error');
+    res.render('error', { message: e });
   }
 });
 
 router.get('/*', (req, res) => {
-  res.render('error');
+  res.render('error', { message: 'Что-то не так' });
 });
 
 module.exports = router;
