@@ -123,9 +123,21 @@
   margin-left: 10px;
 }
 
+.commit-content__title {
+  margin-bottom: 0.4rem;
+}
+
 .commit-content__title a {
   color: black;
   text-decoration: none;
+}
+
+.commit-content__title:hover a {
+  border-bottom: 1px solid rgb(207, 21, 21)
+}
+
+.commit-content__data {
+  font-size: 0.77rem;
 }
 
 .main-aside {
