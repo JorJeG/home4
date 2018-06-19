@@ -1,4 +1,10 @@
+:root {
+  --main-bg-color: rgb(3, 24, 92);
+  --main-font: 16px Helvetica, Arial, sans-serif
+}
+
 .page-main {
+  font: var(--main-font);
   max-width: 900px;
   margin: 0 auto;
   margin-top: 10px;
@@ -61,12 +67,64 @@
 }
 
 .commit-list {
-  list-style: none;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  list-style-type: none;
   padding: 0;
 }
 
-.commit-item__link {
+.commit-item {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 10px;
+}
+
+.commit-item::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 19px;
+  width: 2px;
+  height: 100%;
+  background-color: var(--main-bg-color);
+}
+
+.commit-item:first-of-type::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 19px;
+  width: 2px;
+  height: 50%;
+  background-color: var(--main-bg-color);
+}
+
+.commit-item:last-of-type::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 19px;
+  width: 2px;
+  height: 50%;
+  background-color: var(--main-bg-color);
+}
+
+.commit-item__circle {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+  border-radius: 50%;
+  background-color: var(--main-bg-color);
+}
+
+.commit-content {
+  margin-left: 10px;
+}
+
+.commit-content__title a {
+  color: black;
   text-decoration: none;
 }
 

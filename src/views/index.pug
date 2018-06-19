@@ -22,4 +22,9 @@ block content
     ul.commit-list
       each commit in commits
         li.commit-item
-          a.commit-item__link(href=`/${branch}/${commit.hash}/`)= commit.title
+          .commit-item__circle
+          .commit-content
+            .commit-content__title
+              a(href=`/${branch}/${commit.hash}/`) Title: #{commit.title}
+            .commit-content__data
+              | Date: Wednesday, 20 June 2018
