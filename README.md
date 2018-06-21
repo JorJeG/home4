@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/JorJeG/home4.svg?branch=master)](https://travis-ci.org/JorJeG/home4)
 
+![Main page](src/img/main-page.png)
+
 Чтобы локально всё работало нужно склонировать репозиторий командой и дополнительно в отдельную папку
 ```bash
 git clone git@github.com:JorJeG/home4.git home4 && cd home4 && git clone --mirror git@github.com:JorJeG/home4.git ./wallet-app/
