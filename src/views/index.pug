@@ -3,23 +3,37 @@ extends layout
 block content
   body.page-main
     aside.main-aside
-      ul.branch-list
-        each branch in branches
-          li.branch-item
-            if branch.selected === true
-              a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${branch.commit}/`)= branch.name
-            else
-              a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${branch.commit}/`)= branch.name
-      if lastPath
-        a(href=`${fileUrl}`) Back
-      ul.files-list
-        each file in sortedFiles
-          li.files-item
-            if file.type === 'blob'
-              a.files-item__link.files-item__link_color_blue(href=`/blob/${file.hash}/`)= file.name
-            else
-              a.files-item__link.files-item__link_color_darkgreen(href=`${curUrl}${file.hash}/`)= file.name
+      .branches
+        h4.branches__title
+          | Branches
+        ul.branch-list
+          each branch in branches
+            li.branch-item
+              if branch.selected === true
+                a.branch-item__link.branch-item__link_color_red(href=`/${branch.name}/${branch.commit}/`)= branch.name
+              else
+                a.branch-item__link.branch-item__link_color_green(href=`/${branch.name}/${branch.commit}/`)= branch.name
+      .files
+        h4.files__title
+          | Folders & Files
+        if lastPath
+          a(href=`${fileUrl}`) Back
+        ul.files-list
+          each file in sortedFiles
+            li.files-item
+              if file.type === 'blob'
+                a.files-item__link(href=`/blob/${file.hash}/`)= file.name
+              else
+                a.files-item__link(href=`${curUrl}${file.hash}/`)
+                  span.files-item__icon
+                    | &#128193;
+                  | #{file.name}
     ul.commit-list
       each commit in commits
         li.commit-item
-          a.commit-item__link(href=`/${branch}/${commit.hash}/`)= commit.title
+          .commit-item__circle
+          .commit-content
+            .commit-content__title
+              a(href=`/${branch}/${commit.hash}/`) Title: #{commit.title}
+            .commit-content__data
+              | Date: #{commit.date}

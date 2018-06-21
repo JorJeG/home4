@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/JorJeG/home4.svg?branch=master)](https://travis-ci.org/JorJeG/home4)
 
-Чтобы локально всё работало нужно склонировать репозиторий командой и дополнительно в отдельную папку
+![Main page](src/img/main-page2.png)
+
+Чтобы локально всё работало нужно выполнить данную команду
 ```bash
 git clone git@github.com:JorJeG/home4.git home4 && cd home4 && git clone --mirror git@github.com:JorJeG/home4.git ./wallet-app/
 ```
@@ -31,7 +33,7 @@ npm run dev # работает в watch режиме
 npm run prod # минификация кода
 ```
 
-После сборки проекта, запускаем старт сервера
+После сборки проекта, запускаем сервер
 ```bash
 npm start
 ```
